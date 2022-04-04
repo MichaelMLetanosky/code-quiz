@@ -2,18 +2,15 @@
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.1;
   }
-  
-  html {
-  
-  }
 
-  .intro-loss-container {
-
+  .loss-box {
+    display: none;
   }
   
   .win-container {
     display: none;
   }
+
   @media screen and (max-width: 992px) {
   
   }

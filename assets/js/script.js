@@ -1,45 +1,36 @@
 //Global Variables
 //Todo
 var startBtn = document.querySelector("#start-button")
+   
+//Lists of questions as an array
+var answerArray = ['This is the first question?','yes','no','maybe','all of the above','1'];
 
 //Script
 //Todo Create function that starts game
-function codeQuiz() {
+function codeQuiz(x) {
     //Test that function can be called
     console.log("Ready set go!");
     
     //Todo starts timer
     
-    //Todo hides introduction and start button
-    var introLossCont = document.querySelector(".intro-loss-container");
+    //Hides introduction and start button
+    document.querySelector(".intro-loss-container").style.display = "none";
 
-    introLossCont.style.display = "none";
-    
-    //Todo displays question
-    var question = document.querySelector(".question");
+    //Adds text to body to display questions and 4 answers as button appropriate buttons
+    //Sets first item of given array as the question text
+    document.querySelector(".question").textContent = x[0];
 
-    question.textContent = "This is the first question?";
-    
-    //Todo displays 4 answers as button
-    var listAnswer = document.querySelector(".answers");
-    var answerArray = ['yes','no','maybe','all of the above'];
-    var answer = document.createElement("li");
-
-    function printBtn() {
-        for (var i=0; i < answerArray.length; i++) {
-            var btn = document.createElement("button");
-            var t = document.createTextNode(answerArray[i]);
-            btn.appendChild(t);
-            btn.style.display = "block";
-            document.body.appendChild(btn);
-        };
-    };
-
-    printBtn();
-
+    //Sets second through second from last item of array as answer buttons in a single column
+    for (let i=1; i < x.length - 1; i++) {
+        var answer = document.querySelector("[data-number='" + i + "']");
+        answer.textContent = x[i];
+        answer.style.display = "block";
+        }
 };
 
 //Event listener on start button
-startBtn.addEventListener ("click", codeQuiz);
+startBtn.addEventListener ("click", function(){
+    codeQuiz(answerArray)
+});
 
 console.log("Initialized");
