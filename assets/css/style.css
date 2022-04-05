@@ -92,6 +92,8 @@
     padding: 5px;
     font-size: 20px;
     font-weight: bolder;
+    background-color: indigo;
+    color: white;
     border: 3px solid black;
   }
 
@@ -124,7 +126,4 @@
     display: none;
   }
 
-  @media screen and (max-width: 576px) {
-  
-  }
   

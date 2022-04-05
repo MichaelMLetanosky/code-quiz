@@ -1,20 +1,7 @@
-
-   // var testOne = ['Sam','50'];
-    //var testTwo = ['Michael','45'];
-    //var testThree = ['Emerald','43'];
-    //var testFour = ['Karen','41'];
-    //var testFive = ['Will','38'];
-    
-    //localStorage.setItem ("score1", JSON.stringify(testOne))
-    //localStorage.setItem ("score2", JSON.stringify(testTwo))
-    //localStorage.setItem ("score3", JSON.stringify(testThree))
-    //localStorage.setItem ("score4", JSON.stringify(testFour))
-    //localStorage.setItem ("score5", JSON.stringify(testFive))
-
-
 //Global Variables
 var startBtn = document.querySelector("#start-button");
 var highscoresBtn = document.querySelector("#highscore");
+var submitBtn = document.querySelector("#submit");
 var currentQuestion = 0;
 var currentTime = 50;
    
@@ -23,14 +10,14 @@ var answerArray = [
     ['Commonly used data types DO NOT include:','strings','booleans','alerts','numbers','3'],
     ['The condition in an if / else statement is enclosed within ______.', 'quotes', 'curly braces', 'parentheses', 'square brackets', '3'],
     ['Arrays in JavaScript can be used to store ______.', 'numbers and strings', 'other arrays', 'booleans', 'all of the above', '4'],
-    ['String values must be enclosed with _______ when being assinged to variables', 'commas', 'curly braces', 'quotes', 'parentheses', '2'],
+    ['String values must be enclosed with _______ when being assinged to variables', 'commas', 'curly braces', 'quotes', 'parentheses', '3'],
     ['A very useful tool used during development and debugging for printing content to the debugger is:', 'JavaScript', 'terminal/bash', 'for loops', 'console.log', '4']
 ];
 
 //Starts game
 function gameInitialization () {
     //Hides introduction and start button and clears screen
-    clearScreen ()
+    clearScreen ();
 
     //Makes event listener for answer buttons
     document.addEventListener('click', (e) => {
@@ -136,11 +123,28 @@ function clearScreen () {
     document.querySelector(".win-container").style.display = "none";
 };
 
-function submit () {
+//Submits user name
+function submit (event) {
+    event.preventDefault();
+    //Gathers name and score and puts into an array
+    var submitName = document.getElementById('name').value;
+    var submitScore = currentTime;
+    var submitArr = [submitName, submitScore];
 
-    //var testOne = ['Sam','50'];
-    //localStorage.setItem ("score1", JSON.stringify(testOne))
+    //Check if it's good enough for the leader board
+    if (currentTime > JSON.parse(localStorage.getItem("score5"))[1]) {
+        localStorage.setItem ("score5", JSON.stringify(submitArr));
 
+        //If it's good enough for the leader board it sorts scores into correct spots
+        for (let i = 4; i > 0; i--) {
+            if (currentTime > JSON.parse(localStorage.getItem("score" + i))[1]) {
+                localStorage.setItem("score" + (i + 1), localStorage.getItem("score" + i));
+                localStorage.setItem("score" + i, JSON.stringify(submitArr));
+            };
+        };
+    };
+
+    //Shows highscores
     highscores();
 };
 
@@ -166,12 +170,11 @@ function highscores () {
             let score = row.insertCell(1);
             name.innerHTML = scores[0];
             score.innerHTML = scores[1];
-        }        
-    }
+        };    
+    };
 };
 
-//Event listener on start button
+//Event listeners
 startBtn.addEventListener ("click", gameInitialization);
-
-//Event listen for View Highscores
 highscoresBtn.addEventListener ("click", highscores);
+submitBtn.addEventListener ("click", submit);
