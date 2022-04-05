@@ -43,18 +43,29 @@ function codeQuiz(x) {
         }
 };
 
-function checkOne () {
-    console.log("Is this one right?");
+//Checks answer then moves to next question
+function checkOne (x) {
+    console.log(x);
+    let answer = answerArray[currentQuestion]
+    console.log(answer[5])
 
+    if (x == answer[5]) {
+        console.log("correct")
+    } else {
+        console.log("wrong")
+    }
+
+    //Moves on to the next question
     currentQuestion++;
     if (currentQuestion < answerArray.length) {
         codeQuiz(answerArray[currentQuestion]);    
     } else {
-        finalScore ();
+        playerWin ();
     };
 };
 
-function finalScore() {
+//Ends the game with a win
+function playerWin() {
     console.log("Thanks for playing!")
 
     //Clears out the question and answer areas
@@ -63,13 +74,25 @@ function finalScore() {
     for (let i=1; i < 5; i++) {
         var answer = document.querySelector("[data-number='" + i + "']");
         answer.textContent = "";
-        };
+    };
 
+    //Puts win text onto page    
     document.querySelector(".win-container").style.display = "block";
 };
 
-
+//Ends the game with a loss
 function playerLoss() {
+    console.log("Better luck next time.")
+
+    //Clears out the question and answer areas
+    document.querySelector(".question").textContent = "";
+
+    for (let i=1; i < 5; i++) {
+        var answer = document.querySelector("[data-number='" + i + "']");
+        answer.textContent = "";
+    };
+
+    //Puts loss text onto page
     document.querySelector(".loss-box").style.display = "block";
     document.querySelector("#start-button").style.display = "inline";
 };
@@ -83,8 +106,9 @@ startBtn.addEventListener ("click", function(){
 //Event listener for answer buttons
 document.addEventListener('click', (e) => {
     let element = e.target;
+    let dataNumb = e.target.getAttribute("data-number")
     if(element.className == "answerButton") {
-        checkOne();
+        checkOne(dataNumb);
     };
 })
 
