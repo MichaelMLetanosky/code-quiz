@@ -15,7 +15,7 @@
             <a href="#">View Highscores</a>
         </section>
         <aside>
-            <h3>Time: <span id="timer">10</span></h3>
+            <h3>Time: <span id="timer">90</span></h3>
         </aside>
     </header>
 
@@ -39,12 +39,17 @@
         <div class="win-container">
             <h2>Thank You for Playing!</h2>
             <p>You finished with a final score of <span id="score"></span></p>
+            <br>
             <p>Enter your name below to submit your score to the leader board!</p>
             <form action="#">
                 <input type="text" id="name" name="Name" placeholder="Name">
-                <br>
-                <input type="submit" value="Submit">
+                <br><br>
+                <input class="submit" type="submit" value="Submit">
             </form>
+        </div>
+        <div>
+            <p id="wrong">Wrong!</p>
+            <p id="right">Right!</p>
         </div>
     </main>
     <script src="./assets/js/script.js"></script>

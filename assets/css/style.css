@@ -3,14 +3,88 @@
     line-height: 1.1;
   }
 
-  .loss-box {
+  header {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px;
+  }
+
+  header section a{
+    text-decoration: none;
+    color: indigo;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  header aside {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  main {
+    margin: 100px 25%;
+    text-align: center;
+  }
+
+  main h1 {
+    margin: 16px;
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  main button {
+    margin: 20px;
+    padding: 3px;
+    font-size: 20px;
+    font-weight: 400;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    background-color: indigo;
+  }
+
+  main p {
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  main h2 {
+    margin: 16px;
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  main form {
+    margin: 16px;
+    font-size: 20px;
+    padding: 3px;
+  }
+
+  .answers button {
+    margin: 5px auto;
     display: none;
   }
-  
+
   .win-container {
     display: none;
   }
 
+  .submit {
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    background-color: indigo;
+  }
+
+  #wrong {
+    display: none;
+  }
+
+  #right {
+    display: none;
+  }
+  
   @media screen and (max-width: 992px) {
   
   }

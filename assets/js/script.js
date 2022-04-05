@@ -26,7 +26,7 @@ function gameInitialization () {
     });
 
     //Starts Timer
-    var currentTime = 10;
+    var currentTime = 90;
     var elem = document.querySelector("#timer");
     elem.innerHTML = currentTime;
     
@@ -39,6 +39,8 @@ function gameInitialization () {
       } else {
         currentTime--;
         elem.innerHTML = currentTime;
+        document.querySelector("#wrong").style.display = "none"
+        document.querySelector("#right").style.display = "none"
       };
     };
 
@@ -65,16 +67,16 @@ function gameInitialization () {
         let answer = answerArray[currentQuestion];
 
         //Checks the pressed button against the stored answer and subtracts time if incorrect
-        if (x !== answer[5]) {
-           console.log("Wrong");
-           currentTime = currentTime - 5;
-           //ensures score can't be negative
-           if (currentTime >= 0) {
-               elem.innerHTML = currentTime;
+        if (x !== answer[5] && currentTime >= 5) {
+               currentTime = currentTime - 5;
+               document.querySelector("#wrong").style.display = "block"
+           } else if (x !== answer[5]) {
+               currentTime = 0
            } else {
-               elem.innerHTML = 0;
-           };
+                document.querySelector("#right").style.display = "block"
         };
+        
+        elem.innerHTML = currentTime;
 
         //Moves on to the next question or if done with last question ends the game
         currentQuestion++;
@@ -96,10 +98,15 @@ function gameInitialization () {
         for (let i=1; i < 5; i++) {
             var answer = document.querySelector("[data-number='" + i + "']");
             answer.textContent = "";
+            answer.style.display = "none";
         };
+
+        document.querySelector("#wrong").style.display = "none"
+        document.querySelector("#right").style.display = "none"
 
         //Puts end text onto page    
         document.querySelector(".win-container").style.display = "block";
+        document.querySelector("#score").innerHTML = currentTime
     };
 };
 
