@@ -1,26 +1,20 @@
 
-    var testOne = ['Sam','50'];
-    var testTwo = ['Michael','45'];
-    var testThree = ['Emerald','43'];
-    var testFour = ['Karen','41'];
-    var testFive = ['Will','38'];
+   // var testOne = ['Sam','50'];
+    //var testTwo = ['Michael','45'];
+    //var testThree = ['Emerald','43'];
+    //var testFour = ['Karen','41'];
+    //var testFive = ['Will','38'];
     
-    localStorage.setItem ("score1", JSON.stringify(testOne))
-    localStorage.setItem ("score2", JSON.stringify(testTwo))
-    localStorage.setItem ("score3", JSON.stringify(testThree))
-    localStorage.setItem ("score4", JSON.stringify(testFour))
-    localStorage.setItem ("score5", JSON.stringify(testFive))
+    //localStorage.setItem ("score1", JSON.stringify(testOne))
+    //localStorage.setItem ("score2", JSON.stringify(testTwo))
+    //localStorage.setItem ("score3", JSON.stringify(testThree))
+    //localStorage.setItem ("score4", JSON.stringify(testFour))
+    //localStorage.setItem ("score5", JSON.stringify(testFive))
 
 
 //Global Variables
-//Todo add global variables
 var startBtn = document.querySelector("#start-button");
 var highscoresBtn = document.querySelector("#highscore");
-//var scoreOne = localStorage.getItem ("score1");
-//var scoreTwo = localStorage.getItem ("score2");
-//var scoreThree = localStorage.getItem ("score3");
-//var scoreFour = localStorage.getItem ("score4");
-//var scoreFive = localStorage.getItem ("score5");
 var currentQuestion = 0;
 var currentTime = 50;
    
@@ -35,9 +29,8 @@ var answerArray = [
 
 //Starts game
 function gameInitialization () {
-    //Hides introduction and start button
-    document.querySelector(".intro-box").style.display = "none";
-    document.querySelector("#start-button").style.display = "none";
+    //Hides introduction and start button and clears screen
+    clearScreen ()
 
     //Makes event listener for answer buttons
     document.addEventListener('click', (e) => {
@@ -112,20 +105,9 @@ function gameInitialization () {
 
     //Ends the game
     function playerEnd() {
-        //Stops the timer
+        //Stops the timer and clears the screen
         clearInterval(timerId);
-
-        //Clears out the question and answer areas
-        document.querySelector(".question").textContent = "";
-
-        for (let i=1; i < 5; i++) {
-            var answer = document.querySelector("[data-number='" + i + "']");
-            answer.textContent = "";
-            answer.style.display = "none";
-        };
-
-        document.querySelector("#wrong").style.display = "none";
-        document.querySelector("#right").style.display = "none";
+        clearScreen();
 
         //Puts end text onto page    
         document.querySelector(".win-container").style.display = "block";
@@ -133,17 +115,22 @@ function gameInitialization () {
     };
 };
 
+
+//Clears Screen of items
 function clearScreen () {
+    //Clears intro section and start button
     document.querySelector(".intro-box").style.display = "none";
     document.querySelector("#start-button").style.display = "none"; 
+    
+    //Clears question and answers
     document.querySelector(".question").textContent = "";
-
     for (let i=1; i < 5; i++) {
         var answer = document.querySelector("[data-number='" + i + "']");
         answer.textContent = "";
         answer.style.display = "none";
     };
 
+    //Clears right and wrong messages and ending message
     document.querySelector("#wrong").style.display = "none";
     document.querySelector("#right").style.display = "none";
     document.querySelector(".win-container").style.display = "none";
@@ -169,15 +156,17 @@ function highscores () {
 
     //Populates highscore table from local storage
     for (let i=1; i<6; i++) {
-        //Parses stored string into an array
-        var scores = JSON.parse(localStorage.getItem("score" + i));
-        const table = document.getElementById("highscore-body");
-        //Inserts row, then two cells with info from stored array
-        let row = table.insertRow();
-        let name = row.insertCell(0);
-        name.innerHTML = scores[0];
-        let score = row.insertCell(1);
-        score.innerHTML = scores[1];        
+        //Checks that the localStorage has a value
+        if (JSON.parse(localStorage.getItem("score" + i) != null)) {
+            //Parses stored string into an array
+            var scores = JSON.parse(localStorage.getItem("score" + i));
+            //Inserts row, then two cells with info from stored array
+            let row = document.getElementById("highscore-body").insertRow();
+            let name = row.insertCell(0);
+            let score = row.insertCell(1);
+            name.innerHTML = scores[0];
+            score.innerHTML = scores[1];
+        }        
     }
 };
 

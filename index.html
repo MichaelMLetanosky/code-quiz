@@ -20,6 +20,7 @@
     </header>
 
     <main>
+        <!--Game start "screen"-->
         <div class="intro-loss-container">
             <div class="intro-box">
                 <h1>Coding Quiz Challenge</h1>
@@ -27,6 +28,7 @@
             </div>
             <button id="start-button">START</button>
         </div>
+        <!--Multiple-choice question "screen"-->
         <div class="game-container">
             <h2 class="question"></h2>
             <ol class="answers">
@@ -36,6 +38,7 @@
                 <button class="answerButton" data-number="4"></button>
             </ol>
         </div>
+        <!--Finished game "screen"-->
         <div class="win-container">
             <h2>Thank You for Playing!</h2>
             <p>You finished with a final score of <span id="score"></span></p>
@@ -47,10 +50,12 @@
                 <input type="submit" value="Submit" id="submit">
             </form>
         </div>
+        <!--right and wrong messages that flash-->
         <div>
             <p id="wrong">Wrong!</p>
             <p id="right">Right!</p>
         </div>
+        <!--Highscore "screen"-->
         <div class="highscore-container">
             <table class="highscore-table">
                 <thead>
