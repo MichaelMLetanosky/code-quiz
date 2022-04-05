@@ -79,7 +79,7 @@ function gameInitialization () {
         //Moves on to the next question or if done with last question ends the game
         currentQuestion++;
         if (currentQuestion < answerArray.length) {
-            codeQuiz(answerArray[currentQuestion]);    
+            displayQuestion(answerArray[currentQuestion]);    
         } else {
             playerEnd ();
         };
@@ -104,4 +104,6 @@ function gameInitialization () {
 };
 
 //Event listener on start button
-startBtn.addEventListener ("click", gameInitialization ());
+startBtn.addEventListener ("click", gameInitialization);
+
+console.log ("initial")
