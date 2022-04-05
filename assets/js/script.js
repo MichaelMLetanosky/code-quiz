@@ -1,10 +1,11 @@
 //Global Variables
 //Todo add global variables
 var startBtn = document.querySelector("#start-button");
+var highscoresBtn = document.querySelector("#highscore")
 var currentQuestion = 0;
-var currentTime = 90;
+var currentTime = 50;
    
-//Lists of questions, multiple choice questions, and the answer as an array
+//Array of an array of questions, multiple choice questions, and the answer
 var answerArray = [
     ['Commonly used data types DO NOT include:','strings','booleans','alerts','numbers','3'],
     ['The condition in an if / else statement is enclosed within ______.', 'quotes', 'curly braces', 'parentheses', 'square brackets', '3'],
@@ -29,7 +30,7 @@ function gameInitialization () {
     });
 
     //Starts Timer
-    currentTime = 90;
+    currentTime = 50;
     var elem = document.querySelector("#timer");
     elem.innerHTML = currentTime;
     
@@ -52,7 +53,7 @@ function gameInitialization () {
         //Sets first item of given array as the question text on html
         document.querySelector(".question").textContent = x[0];
 
-        //Sets second through second from last item of array as answer buttons in a single column
+        //Sets second through second-from-last item of array as answer buttons in a single column
         for (let i=1; i < x.length - 1; i++) {
             var answer = document.querySelector("[data-number='" + i + "']");
             answer.textContent = x[i];
@@ -113,7 +114,16 @@ function gameInitialization () {
     };
 };
 
+function submit () {
+
+};
+
+function highscores () {
+    console.log("highscores")
+};
+
 //Event listener on start button
 startBtn.addEventListener ("click", gameInitialization);
 
-console.log ("initial")
+//Event listen for View Highscores
+highscoresBtn.addEventListener ("click", highscores);
