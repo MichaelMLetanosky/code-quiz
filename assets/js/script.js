@@ -6,8 +6,11 @@ var currentTime = 90;
    
 //Lists of questions, multiple choice questions, and the answer as an array
 var answerArray = [
-    ['This is the first question?','yes','no','maybe','all of the above','1'],
-    ['this is the second question?', 'I guess', 'ask again later', 'outlook bad', 'outlook good', '4']
+    ['Commonly used data types DO NOT include:','strings','booleans','alerts','numbers','3'],
+    ['The condition in an if / else statement is enclosed within ______.', 'quotes', 'curly braces', 'parentheses', 'square brackets', '3'],
+    ['Arrays in JavaScript can be used to store ______.', 'numbers and strings', 'other arrays', 'booleans', 'all of the above', '4'],
+    ['String values must be enclosed with _______ when being assinged to variables', 'commas', 'curly braces', 'quotes', 'parentheses', '2'],
+    ['A very useful tool used during development and debugging for printing content to the debugger is:', 'JavaScript', 'terminal/bash', 'for loops', 'console.log', '4']
 ];
 
 //Starts game
