@@ -70,8 +70,8 @@ function gameInitialization () {
         let answer = answerArray[currentQuestion];
 
         //Checks the pressed button against the stored answer and subtracts time if incorrect
-        if (x !== answer[5] && currentTime >= 5) {
-               currentTime = currentTime - 5;
+        if (x !== answer[5] && currentTime >= 10) {
+               currentTime = currentTime - 10;
                document.querySelector("#wrong").style.display = "block"
            } else if (x !== answer[5]) {
                currentTime = 0
