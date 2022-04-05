@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Title</title>
+  <title>Code Quiz</title>
   <link rel="stylesheet" href="./assets/css/reset.css" />
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
@@ -50,6 +50,17 @@
         <div>
             <p id="wrong">Wrong!</p>
             <p id="right">Right!</p>
+        </div>
+        <div class="highscore-container">
+            <table class="highscore-table">
+                <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody id="highscore-body"></tbody>
+            </table>
         </div>
     </main>
     <script src="./assets/js/script.js"></script>
