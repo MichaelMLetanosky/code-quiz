@@ -29,7 +29,7 @@ function gameInitialization () {
     });
 
     //Starts Timer
-    var currentTime = 90;
+    currentTime = 90;
     var elem = document.querySelector("#timer");
     elem.innerHTML = currentTime;
     
