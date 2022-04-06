@@ -131,18 +131,38 @@ function submit (event) {
     var submitScore = currentTime;
     var submitArr = [submitName, submitScore];
 
-    //Check if it's good enough for the leader board
-    if (currentTime > JSON.parse(localStorage.getItem("score5"))[1]) {
+    //Checks if leaderboard is populated and time is better than 5th place
+    if (JSON.parse(localStorage.getItem("score5")) != null && 
+        currentTime > JSON.parse(localStorage.getItem("score5"))[1]) {
+
+        //If it's good enough for the leader board it sorts scores into correct spots            
         localStorage.setItem ("score5", JSON.stringify(submitArr));
 
-        //If it's good enough for the leader board it sorts scores into correct spots
         for (let i = 4; i > 0; i--) {
             if (currentTime > JSON.parse(localStorage.getItem("score" + i))[1]) {
                 localStorage.setItem("score" + (i + 1), localStorage.getItem("score" + i));
                 localStorage.setItem("score" + i, JSON.stringify(submitArr));
             };
         };
-    };
+
+    } else if (JSON.parse(localStorage.getItem("score1")) != null) {
+        //Checks to see if there is anything on the leaderboard
+        //If there are, it sorts board
+        for (let i = 4; i > 0; i--) {
+            if (JSON.parse(localStorage.getItem("score" + i)) != null && 
+                currentTime > JSON.parse(localStorage.getItem("score" + i))[1]) {
+
+                localStorage.setItem("score" + (i + 1), localStorage.getItem("score" + i));
+                localStorage.setItem("score" + i, JSON.stringify(submitArr));
+            } else if (JSON.parse(localStorage.getItem("score" + i)) != null) {
+                localStorage.setItem("score" + (i+1), JSON.stringify(submitArr));
+                i = 0;
+            };
+        };
+    } else {
+        //If there are no items on leader board it adds it to top spot
+        localStorage.setItem ("score1", JSON.stringify(submitArr));
+    }
 
     //Shows highscores
     highscores();
