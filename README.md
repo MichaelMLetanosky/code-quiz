@@ -1,5 +1,11 @@
 # 04 Web APIs: Code Quiz
 
+Multiple-choice quiz with timer and a locally stored highscores table.
+
+Deployed version can be found at https://michaelmletanosky.github.io/code-quiz/
+
+![Screenshot of the start page of the code quiz](./assets/images/code-quiz-ss.png)
+
 ## Your Task
 
 At some point in your journey to become a full-stack web developer, you’ll likely be asked to complete a coding assessment&mdash;perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 

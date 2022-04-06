@@ -144,7 +144,6 @@ function submit (event) {
                 localStorage.setItem("score" + i, JSON.stringify(submitArr));
             };
         };
-
     } else if (JSON.parse(localStorage.getItem("score1")) != null) {
         //Checks to see if there is anything on the leaderboard
         //If there are, it sorts board
